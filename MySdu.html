@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com"> <!--Шрифт и стиль текста всего сайта-->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,700;1,300&display=swap" rel="stylesheet">
+    <title>My Sdu</title> 
+<!--------------------------------------------------------------------------------------------------------------------------->
+    <style> /*Отвечает за цвет таблицы*/
+        table {
+         width: 100%;
+         height: 100%; 
+         background: rgb(0, 0, 0); 
+         color: rgb(255, 255, 255);
+         border-spacing: 3px; 
+        }
+        td, th {
+         background-color: rgb(0, 0, 0);
+         padding: 5px; 
+        }
+       </style>
+<!--------------------------------------------------------------------------------------------------------------------------->
+    <style> /*Отвечает за сгругление картинки*/
+        .round {
+         border-radius: 200px; /* Радиус скругления */
+         border: 3px solid rgb(43, 7, 54); /* Параметры рамки */
+         box-shadow: 0 0 7px rgb(64, 1, 70); /* Параметры тени */
+        }
+    </style>
+<!--------------------------------------------------------------------------------------------------------------------------->
+<style type="text/css"> /*Убирает нижнее подчеркивание под ссылками (взято с интернета)*/
+    A {
+     text-decoration: none; /* Убирает подчеркивание для ссылок */
+    } 
+    A:hover { 
+     text-decoration: underline; /* Добавляем подчеркивание при наведении курсора на ссылку */
+     color: rgba(0, 253, 211, 0.616); 
+    } 
+   </style>
+
+   <style>
+       *h1 {margin: 0;
+        font-family: 'Josefin Sans', sans-serif;}
+   </style>
+<!--------------------------------------------------------------------------------------------------------------------------->
+<style> /*Цвет ссылки*/
+    A {
+     color: #ffffff; /* Цвет текста */
+     padding: 2px; /* Поля вокруг текста */
+    }
+   </style>
+<!--------------------------------------------------------------------------------------------------------------------------->
+<style> /*Отвечает за цвет Таблицы*/
+    table {
+     width: 100%;
+     background:rgba(56, 29, 73, 0.596) ; 
+     color: rgb(255, 255, 255); 
+     border-spacing: 1px; 
+    }
+    td, th {
+     background: rgba(0, 0, 0, 0.74); 
+     padding: 5px;
+    }
+    .round {
+     border-radius: 50%;
+     }
+   </style>
+<!--------------------------------------------------------------------------------------------------------------------------->
+<style> /*Выравнивает текст, фото, */
+    .fig {
+     text-align: center; /* Выравнивание по центру */ 
+    }
+   </style>
+<!--------------------------------------------------------------------------------------------------------------------------->
+<style> /*Отвечает за поле, и границы поля*/
+     th, td {
+border: 1px solid rgb(0, 0, 0);
+}
+</style>
+<!--------------------------------------------------------------------------------------------------------------------------->
+<style> /*Видео-Фон*/
+    video#bgvid { 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background: url(polina.jpg) no-repeat;
+    background-size: cover; 
+}
+</style>
+<!--------------------------------------------------------------------------------------------------------------------------->
+</head>
+<body> <!--Верхняя часть сайта, с переходом по ссылкам по my.sdu-->
+    <div class = "ссссс"> 
+        <table> 
+            <tr> <!--В Хреф вставяем ссылку, дальше можем указать название-->
+                <th><a href="https://my.sdu.edu.kz/index.php">  Home page    </a></th>
+                <th><a href="https://my.sdu.edu.kz/index.php?mod=rules">   Stuff   </a></th>
+                <th><a href="https://my.sdu.edu.kz/index.php?mod=course_struct">   Currcilum   </a></th>
+                <th><a href="https://my.sdu.edu.kz/index.php?mod=schedule">   Course Scheldule   </a></th>
+                <th><a href="Lab-Work 2.html">   About us   </a></th>
+            </tr>
+        </table>
+        <hr>
+    </div>
+    
+
+    <div class = "content"> <!--Сду Картинка и размер-->
+        <div class = "photo">
+            <p class="fig"><img src = "sduneon.gif" alt = "" width="400px" height="300px" class="round" style="position: relative; top: px;"></p> <!--Закинул внутри файла фотографию и указал широту и высотку фотографии, раундом указал фигуру фотки-->
+        </div>
+    </div >
+    
+    <div> <!--Название таблицы и сама таблица с названиями-->
+        <table style="position: relative ;width: 450px; height: 100px; left: 515px; bottom: 200;">
+    <p class="fig"><caption><h1>Student information</h1></caption>
+    <tr>
+        <th>Name</th>
+        <th>Gabit</th>
+    </tr>
+    <tr>
+        <th>Surname</th>
+        <th>Assanov</th>
+    </tr>
+    <tr>
+        <th>ID</th>
+        <th>200103002</th>
+    </tr>
+    <tr>
+        <th>Email:</th>
+        <th>200103002@stu.sdu.edu.kz</th>
+    </tr>
+    <tr>
+        <th>City</th>
+        <th>Taraz</th>
+    </tr>
+    <tr>
+        <th>Advisor</th>
+        <th>Abylay Omar</th>
+    </tr>   
+    <tr>
+        <th>Grant type</th>
+        <th>State grant</th>
+    </tr></p>
+</table>
+</div>
+
+  <form action="Вникуда.php" method="post"> <!--Поле и кнопка, вместе с названием-->
+    <p><b><h2 style="position: relative; top: 40px; color:#fdfdfd ;" >Do you have any problem?</h2></b></p>
+    <p><textarea style="position: relative; top: 40px; background-color: #a672b6af; " rows="10" cols="45" name="text"></textarea></p>
+    <p><input style="position: relative; top: 40px;" type="submit" value="Send"></p> <!--Указывает сайту что это кнопка Подтвердить-->
+  </form>   
+
+  <video playsinline autoplay muted loop poster="neont.mp4" id="bgvid"> <!--Видео-->
+    <source src="neont.webm" type="video/webm">
+    <source src="neont.mp4" type="video/mp4">
+</video>
+
+<audio style="position: relative; top: 40px; " controls autoplay loop>
+    <source src="miami.mid.mp3" type="audio/ogg">
+</audio>
+
+</body>
+</html>
+
+
+
