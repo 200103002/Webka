@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yaldevi:wght@500&display=swap" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    <style>
+      body {
+          background-color: #8d8d8d;
+          font-family: 'Josefin Sans', sans-serif;
+          font-weight: 300;
+          font-size: 16px;
+          color: #555;
+          -webkit-font-smoothing: antialiased;
+          -webkit-overflow-scrolling: touch;
+          margin-top: 10px;
+        }
+    </style>
+
+
+
+
+
+<style type="text/css"> /*Убирает нижнее подчеркивание под ссылками (взято с интернета)*/
+    A {
+     text-decoration: none; /* Убирает подчеркивание для ссылок */
+    } 
+    A:hover { 
+     text-decoration: underline; /* Добавляем подчеркивание при наведении курсора на ссылку */
+     color: rgb(16, 19, 20); 
+    } 
+     /*Цвет ссылки*/
+    A {
+     color: #000000; /* Цвет текста */
+     padding: 2px; /* Поля вокруг текста */
+    }
+   
+   </style>
+
+<style> /*navbar*/
+      .zxc{
+     position: relative;
+     top: -10px;
+     height: 0px;
+    }
+    
+</style>
+
+
+
+
+
+
+<style> /*Бургер и выдвижение*/
+    #menu__toggle {
+      opacity: 0; /*делает прозрачным кнопку*/
+    }
+    
+    #menu__toggle:checked ~ .menu__btn > span {
+      transform: rotate(45deg); /*смена градуса крестика при нажатии*/
+    }
+    #menu__toggle:checked ~ .menu__btn > span::before { /*Отвечает за поворот верхней полосы бургера*/
+      top: 0;
+      transform: rotate(0); /*Поворот элемента*/
+    }
+    #menu__toggle:checked ~ .menu__btn > span::after { /*отвечает за поворот нижней полосы бургера*/
+      top: 0;
+      transform: rotate(90deg); /*поворот нижней полосы на 90 градусов*/
+    }
+    #menu__toggle:checked ~ .menu__box { /*отвечает за само меню и его видимость*/
+      visibility: visible;
+      left: 0;
+    }
+    
+    .menu__btn {
+      display: flex;
+      align-items: center;/* управляет выравниванием элементов по перекрёстной оси. лево и низ\\ https://developer.mozilla.org/ru/docs/Web/CSS/CSS_Flexible_Box_Layout/Aligning_Items_in_a_Flex_Container*/
+      position: fixed; /*фиксированная позиция*/
+      top: 20px;  /* вниз сам гамбургер */
+      left: 20px;  /* двигать гамбургер */
+    
+      width: 26px;
+      height: 26px;
+    
+      cursor: pointer; /* меняет курсор */
+      z-index: 5; /*отвечает за слой чтобы крест не был под меню*/
+    }
+    
+    .menu__btn > span, /*Спан отвечает за выделение строки*/
+    .menu__btn > span::before, /*Псевдоэлементы :before и :after позволяют добавлять содержимое (стили) до и после элемента, к которому были применены. Например ковычки */
+    .menu__btn > span::after {
+      display: block; /*делает меню блочным*/
+      position: absolute;
+     
+      width: 100%; /* размер линий бургера и крестика */
+      height: 4px;
+    
+      background-color: #ffffff; /* Цвет бургера */
+    
+      transition-duration: .25s;  /* время анимации */
+    }
+    .menu__btn > span::before {
+      content: '';
+      top: -8px; /*высота верхней полосы*/
+    }
+    .menu__btn > span::after {
+      content: '';
+      top: 8px; /*высота нижней полосы*/
+    }
+    
+    .menu__box {
+      display: block; /*делает меню блочным*/
+      position: fixed;
+      visibility: hidden;
+      top: 0; /*высота меню*/
+      left: -100%; 
+      z-index: 4;
+    
+      width: 300px;
+      height: 100%;
+    
+      margin: 0; /*расстояние от края*/
+      padding: 80px 0;
+    
+      list-style: none; /*убираем маркер*/
+    
+      background-color: #252729b7;
+      box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
+    
+      transition-duration: .25s;  /*время длительности анимаций*/
+    }
+    
+    .menu__item {
+      display: block;
+      padding: 12px 24px;
+    
+      color: rgb(252, 252, 252); /* цвет букв */
+    
+      font-family:'Yaldevi', sans-serif;
+      font-size: 20px; 
+      font-weight: 600%;
+    
+      text-decoration: none;
+    
+      transition-duration: .25s;
+    }
+    .menu__item:hover {
+      background-color: #CFD8DC;
+    }
+    
+    </style>+
+
+
+
+  <style> /*Мобильная адаптация*/
+  #headerwrap {
+background: url(море_океан_побережье_природа_рок.jpg) no-repeat, center top;
+margin-top: -60px;
+padding-top: 575px;
+
+
+background-attachment: relative;
+background-position: center center;
+min-height: 500px;
+width: 100%;
+-webkit-background-size: 100%;
+-moz-background-size: 100%;
+-o-background-size: 100%;
+background-size: 100%;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}
+
+#headerwrap h1 {
+position: relative;
+top: -190px;
+color: white;
+font-size: 180px;
+font-weight: 300;
+letter-spacing: 3px;
+}
+
+
+@media (max-width: 768px ) {
+#headerwrap h1 {
+font-size: 100px;
+}
+
+#headerwrap h2 {
+font-size: 30px;
+}
+}
+
+  </style>
+
+
+<style>
+  #copyrights {
+    background: #222222;
+    padding: 20px 0;
+    text-align: center;
+    color: #fff;
+  }
+  
+  #copyrights p {
+    margin-bottom: 15px;
+  }
+</style>  
+
+
+<style>/*Навбар2 и кнопка*/
+  .zxc{
+ position: relative;
+
+ height: 0px;
+}
+</style>
+
+<style> /*Карточки, шрифт, размер*/
+  #dg {
+    background: white;
+    padding-top: 180px;
+    padding-bottom: 200px;
+    text-align: center;
+    margin: 0 auto;
+    width: 90%;
+  }
+  </style>
+
+<style>
+
+
+body{
+    margin-top:20px;
+    color: #9ea3ad;
+    background: #b8bac0;
+}
+.timeline {
+    position: relative;
+    background: #aeb0b9;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    padding: 5rem;
+    margin: 0 auto 1rem auto;
+    overflow: hidden;
+}
+.timeline:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -2px;
+    border-right: 2px dashed #4b546f;
+    height: 100%;
+    display: block;
+}
+
+.timeline-row {
+    padding-left: 50%;
+    position: relative;
+    margin-bottom: 30px;
+}
+.timeline-row .timeline-time {
+    position: absolute;
+    right: 50%;
+    top: 15px;
+    text-align: right;
+    margin-right: 20px;
+    color: #dcdcdd;
+    font-size: 1.5rem;
+}
+.timeline-row .timeline-time small {
+    display: block;
+    font-size: 0.8rem;
+}
+.timeline-row .timeline-content {
+    position: relative;
+    padding: 20px 30px;
+    background: #959baa;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+.timeline-row .timeline-content:after {
+    content: "";
+    position: absolute;
+    top: 20px;
+    height: 16px;
+    width: 16px;
+    background: #1a233a;
+}
+.timeline-row .timeline-content:before {
+    content: "";
+    position: absolute;
+    top: 20px;
+    right: -49px;
+    width: 20px;
+    height: 20px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    z-index: 10;
+    background: #bbbdc7;
+    border: 2px dashed #aeb2c0;
+}
+.timeline-row .timeline-content h4 {
+    margin: 0 0 20px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    line-height: 150%;
+}
+.timeline-row .timeline-content p {
+    margin-bottom: 30px;
+    line-height: 150%;
+}
+.timeline-row .timeline-content i {
+    font-size: 1.2rem;
+    line-height: 100%;
+    padding: 15px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    background: #000000;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+.timeline-row .timeline-content .thumbs {
+    margin-bottom: 20px;
+    display: flex;
+}
+.timeline-row .timeline-content .thumbs img {
+    margin: 5px;
+    max-width: 60px;
+}
+.timeline-row .timeline-content .badge {
+    color: #ffffff;
+    background: linear-gradient(120deg, #00b5fd 0%, #0047b1 100%);
+}
+.timeline-row:nth-child(even) .timeline-content {
+    margin-left: 40px;
+    text-align: left;
+}
+.timeline-row:nth-child(even) .timeline-content:after {
+    left: -8px;
+    right: initial;
+    border-bottom: 0;
+    border-left: 0;
+    transform: rotate(-135deg);
+}
+.timeline-row:nth-child(even) .timeline-content:before {
+    left: -52px;
+    right: initial;
+}
+.timeline-row:nth-child(odd) {
+    padding-left: 0;
+    padding-right: 50%;
+}
+.timeline-row:nth-child(odd) .timeline-time {
+    right: auto;
+    left: 50%;
+    text-align: left;
+    margin-right: 0;
+    margin-left: 20px;
+}
+.timeline-row:nth-child(odd) .timeline-content {
+    margin-right: 40px;
+}
+.timeline-row:nth-child(odd) .timeline-content:after {
+    right: -8px;
+    border-left: 0;
+    border-bottom: 0;
+    transform: rotate(45deg);
+}
+
+@media (max-width: 992px) {
+    .timeline {
+        padding: 15px;
+    }
+    .timeline:after {
+        border: 0;
+    }
+    .timeline .timeline-row:nth-child(odd) {
+        padding: 0;
+    }
+    .timeline .timeline-row:nth-child(odd) .timeline-time {
+        position: relative;
+        top: 0;
+        left: 0;
+        margin: 0 0 10px 0;
+    }
+    .timeline .timeline-row:nth-child(odd) .timeline-content {
+        margin: 0;
+    }
+    .timeline .timeline-row:nth-child(odd) .timeline-content:before {
+        display: none;
+    }
+    .timeline .timeline-row:nth-child(odd) .timeline-content:after {
+        display: none;
+    }
+    .timeline .timeline-row:nth-child(even) {
+        padding: 0;
+    }
+    .timeline .timeline-row:nth-child(even) .timeline-time {
+        position: relative;
+        top: 0;
+        left: 0;
+        margin: 0 0 10px 0;
+        text-align: left;
+    }
+    .timeline .timeline-row:nth-child(even) .timeline-content {
+        margin: 0;
+    }
+    .timeline .timeline-row:nth-child(even) .timeline-content:before {
+        display: none;
+    }
+    .timeline .timeline-row:nth-child(even) .timeline-content:after {
+        display: none;
+    }
+}
+
+
+</style>
+
+</head>
+
+</head>
+<body>
+
+ <div class="hamburger-menu">
+     <input id="menu__toggle" type="checkbox" />
+     <label class="menu__btn" for="menu__toggle">
+       <span></span>
+     </label>
+   
+     <ul class="menu__box">
+       <li><a class="menu__item" href="MAIN.html">MAIN</a></li>
+       <li><a class="menu__item" href="1-page(TICKET).html">TICKET</a></li>
+       <li><a class="menu__item" href="2-page(HOUSING).html">HOUSING</a></li>
+       <li><a class="menu__item" href="3-page(SERVICES).html">MY PROFILE</a></li>
+       <li><a class="menu__item" href="4-page(ABOUT).html">ABOUT US</a></li>
+     </ul>
+     </div>
+
+     <div id="headerwrap">
+      <div class="text-center">
+         <h1></h1>
+         <h1 style="color: #ffffff9c;">|ADVEN|</h1> 
+         <h2 style="color: #ffffff9c;"></h2>
+         <h2>⠀</h2> 
+       </div>
+     </div>
+
+     <div class="zxc">
+     <nav class="navbar navbar-expand-sm bg-dark navbar-dark"> <!--Указываем что полоса дожна быть темной-->
+        <a class="navbar-brand">ADVEN || </a> <!--создает имя проекту-->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar"><!--навбар коллапс для группирования-->
+          <ul class="navbar-nav"> <!--для навигация высоты навбаров-->
+            <li class="nav-item"> <!--Родитель нав линка, можно управлять какой будет ссылка-->
+                <a class="nav-link" href="3-page(SERVICES).html">My profile ></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="1-page(TICKET).html">Ticket ></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="2-page(HOUSING).html">House </a>
+              </li>    
+          </ul>
+        </div>  
+      </nav>
+    </div>
+
+    <div id="dg">
+    <div class="container" >
+        <div class="row">
+          <div class="col-sm-4">
+            <h2>About Us</h2>
+            <h5>⠀</h5>
+            <h3><p>We do our best not to be deceived by our customers. After all, honesty is the main sign of respect for our friend, yes you are our friend, you are not a customer, and our friend whom we will not abandon, so be confident in us and we will achieve a lot together</p></h3>
+            <hr class="d-sm-none">
+          </div>
+          <div class="col-sm-8">
+            <div class="fakeimg"><img src="Англия_Devon_Море_Природа.jpg" style= "width: 100%;" alt=""></div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+    </div>
+
+      <div id="copyrights">
+        <div class="container">
+          <p>@MadeInGabitAssanov </p>
+          </div>
+        </div>
+      </div>
+</body>
+</html>
+
+<div class="container">
+  <div class="timeline">
+      <div class="timeline-row">
+        <div class="timeline-time">
+          7:45PM<small>Dec 21</small>
+        </div>
+        <div class="timeline-content">
+          <i class="icon-attachment"></i>
+          <h4>Admin theme!</h4>
+          <p>Maxwell Admin Dashboard contains C3 graphs, flot graphs, data tables, calendar, drag &amp; drop and ion slider.</p>
+          <div class="thumbs">
+            <img class="img-fluid rounded" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Maxwell Admin">
+            <img class="img-fluid rounded" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="Maxwell Admin">
+            <img class="img-fluid rounded" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="Maxwell Admin">
+          </div>
+          <div class="">
+            <span class="badge badge-pill">Sales</span>
+            <span class="badge badge-pill">Admin</span>
+          </div>
+        </div>
+      </div>
+  
+      <div class="timeline-row">
+        <div class="timeline-time">
+          8:00 AM<small>Dec 18</small>
+        </div>
+        <div class="timeline-content">
+          <i class="icon-code"></i>
+          <h4>Admin Dashboard!</h4>
+          <p>
+            Maxwell Admin Dashboard contains C3 graphs, flot graphs, data tables, calendar.
+          </p>
+          <div class="thumbs">
+            <div class="thumbs">
+            <img class="img-fluid rounded" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Maxwell Admin">
+            <img class="img-fluid rounded" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="Maxwell Admin">
+            <img class="img-fluid rounded" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="Maxwell Admin">
+          </div>
+          </div>
+          <div class="">
+            <span class="badge badge-pill">Graphs</span>
+            <span class="badge badge-pill">Chat</span>
+          </div>
+        </div>
+      </div>
+  
+      <div class="timeline-row">
+        <div class="timeline-time">
+          7:25 PM<small>Dec 6</small>
+        </div>
+        <div class="timeline-content">
+          <i class="icon-turned_in_not"></i>
+          <h4>Best Admin Template!</h4>
+          <p>Custom C3 graphs, Custom flot graphs, flot graphs, small graphs, Sass, profile and timeline.</p>
+          <div>
+            <span class="badge badge-pill">Invoice</span>
+            <span class="badge badge-pill">Tasks</span>
+          </div>
+        </div>
+      </div>
+  
+      <div class="timeline-row">
+        <div class="timeline-time">
+          3:55 PM<small>Dec 26</small>
+        </div>
+        <div class="timeline-content">
+          <i class="icon-directions"></i>
+          <h4>Maxwell Admin</h4>
+          <p>Maxwell Admin Dashboard contains C3 graphs, flot graphs, data tables, calendar, drag &amp; drop and ion slider.</p>
+          <div>
+            <span class="badge badge-pill">Profile</span>
+            <span class="badge badge-pill">Sales</span>
+          </div>
+        </div>
+      </div>
+  
+      <div class="timeline-row">
+        <div class="timeline-time">
+          5:24 PM<small>Dec 12</small>
+        </div>
+        <div class="timeline-content">
+          <i class="icon-change_history"></i>
+          <h4>Maxwell Dashboard</h4>
+          <p class="no-margin">Maxwell Admin dashboard includes invoice, profile, tasks, gallery, projects, maintanence.</p>
+          <div class="thumbs">
+            <img class="img-fluid rounded" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Maxwell Admin">
+            <img class="img-fluid rounded" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Maxwell Admin">
+            <img class="img-fluid rounded" src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="Maxwell Admin">
+          </div>
+          <div>
+            <span class="badge badge-pill">Analytics</span>
+            <span class="badge badge-pill">Contacts</span>
+          </div>
+        </div>
+      </div>
+  
+      <div class="timeline-row">
+        <div class="timeline-time">
+          8:00 AM<small>Dec 18</small>
+        </div>
+        <div class="timeline-content">
+          <i class="icon-code"></i>
+          <h4>Admin Dashboard!</h4>
+          <p>
+            Maxwell Admin Dashboard contains C3 graphs, flot graphs, data tables, calendar.
+          </p>
+          <div class="thumbs">
+            <img class="img-fluid rounded" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Maxwell Admin">
+            <img class="img-fluid rounded" src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="Maxwell Admin">
+            <img class="img-fluid rounded" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="Maxwell Admin">
+          </div>
+          <div class="">
+            <span class="badge badge-pill">Ecommerce</span>
+            <span class="badge badge-pill">CRM</span>
+          </div>
+        </div>
+      </div>
+  
+      <div class="timeline-row">
+        <div class="timeline-time">
+          7:45PM<small>Dec 21</small>
+        </div>
+        <div class="timeline-content">
+          <i class="icon-attachment"></i>
+          <h4>Admin Template!</h4>
+          <p>Maxwell Admin Dashboard contains C3 graphs, flot graphs, data tables, calendar, drag &amp; drop and ion slider.</p>
+          <div class="thumbs">
+            <img class="img-fluid rounded" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="Maxwell Admin">
+            <img class="img-fluid rounded" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="Maxwell Admin">
+          </div>
+          <div class="">
+            <span class="badge badge-pill">Orders</span>
+            <span class="badge badge-pill">Sales</span>
+          </div>
+        </div>
+      </div>
+  
+      <div class="timeline-row">
+        <div class="timeline-content">
+          <p class="m-0">Loading...</p>
+        </div>
+      </div>
+  
+    </div>
+  </div>

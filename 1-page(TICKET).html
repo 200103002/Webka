@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yaldevi:wght@500&display=swap" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    <style> 
+      body {
+          background-color: #ffffff;
+          font-family: 'Josefin Sans', sans-serif;
+          font-weight: 300;
+          font-size: 16px;
+          color: #555;
+          -webkit-font-smoothing: antialiased;
+          -webkit-overflow-scrolling: touch;
+          margin-top: 10px;
+        }
+    </style>
+
+    <style> /*шрифт и размер*/
+
+        h1, h2, h3, h4, h5, h6 {
+    font-family: 'Josefin Sans', sans-serif;;
+    font-weight: 300;
+    color: #333;
+    }
+  
+  
+    .centered {
+      text-align: center;
+    }
+    </style>
+
+    <style> /*Мобильная адаптация*/
+        #headerwrap {
+    background: url(прибой.jpg) no-repeat, center top;
+    margin-top: -60px;
+    padding-top: 450px;
+
+    background-attachment: relative;
+    background-position: center center;
+    min-height: 500px;
+    width: 100%;
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  
+  #headerwrap h1 {
+    position: relative;
+    top: -190px;
+    color: white;
+    font-size: 180px;
+    font-weight: 300;
+    letter-spacing: 3px;
+  }
+  
+  #headerwrap h2 {
+    position: relative;
+    top: -200px;
+    color: white;
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  
+  @media (max-width: 768px ) {
+    #headerwrap h1 {
+      font-size: 100px;
+    }
+  
+    #headerwrap h2 {
+      font-size: 30px;
+    }
+  }
+  
+    </style>
+
+
+
+<style type="text/css"> /*Убирает нижнее подчеркивание под ссылками (взято с интернета)*/
+    A {
+     text-decoration: none; /* Убирает подчеркивание для ссылок */
+    } 
+    A:hover { 
+     text-decoration: underline; /* Добавляем подчеркивание при наведении курсора на ссылку */
+     color: rgb(255, 255, 255); 
+    } 
+     /*Цвет ссылки*/
+    A {
+     color: #ffffff; /* Цвет текста */
+     padding: 2px; /* Поля вокруг текста */
+    }
+   
+   </style> 
+
+
+
+<style> /*Бургер и выдвижение*/
+    #menu__toggle {
+      opacity: 0; /*делает прозрачным кнопку*/
+    }
+    
+    #menu__toggle:checked ~ .menu__btn > span {
+      transform: rotate(45deg); /*смена градуса крестика при нажатии*/
+    }
+    #menu__toggle:checked ~ .menu__btn > span::before { /*Отвечает за поворот верхней полосы бургера*/
+      top: 0;
+      transform: rotate(0); /*Поворот элемента*/
+    }
+    #menu__toggle:checked ~ .menu__btn > span::after { /*отвечает за поворот нижней полосы бургера*/
+      top: 0;
+      transform: rotate(90deg); /*поворот нижней полосы на 90 градусов*/
+    }
+    #menu__toggle:checked ~ .menu__box { /*отвечает за само меню и его видимость*/
+      visibility: visible;
+      left: 0;
+    }
+    
+    .menu__btn {
+      display: flex;
+      align-items: center;/* управляет выравниванием элементов по перекрёстной оси. лево и низ\\ https://developer.mozilla.org/ru/docs/Web/CSS/CSS_Flexible_Box_Layout/Aligning_Items_in_a_Flex_Container*/
+      position: fixed; /*фиксированная позиция*/
+      top: 20px;  /* вниз сам гамбургер */
+      left: 20px;  /* двигать гамбургер */
+    
+      width: 26px;
+      height: 26px;
+    
+      cursor: pointer; /* меняет курсор */
+      z-index: 5; /*отвечает за слой чтобы крест не был под меню*/
+    }
+    
+    .menu__btn > span, /*Спан отвечает за выделение строки*/
+    .menu__btn > span::before, /*Псевдоэлементы :before и :after позволяют добавлять содержимое (стили) до и после элемента, к которому были применены. Например ковычки */
+    .menu__btn > span::after {
+      display: block; /*делает меню блочным*/
+      position: absolute;
+     
+      width: 100%; /* размер линий бургера и крестика */
+      height: 4px;
+    
+      background-color: #ffffff; /* Цвет бургера */
+    
+      transition-duration: .25s;  /* время анимации */
+    }
+    .menu__btn > span::before {
+      content: '';
+      top: -8px; /*высота верхней полосы*/
+    }
+    .menu__btn > span::after {
+      content: '';
+      top: 8px; /*высота нижней полосы*/
+    }
+    
+    .menu__box {
+      display: block; /*делает меню блочным*/
+      position: fixed;
+      visibility: hidden;
+      top: 0; /*высота меню*/
+      left: -100%; 
+      z-index: 4;
+    
+      width: 300px;
+      height: 100%;
+    
+      margin: 0; /*расстояние от края*/
+      padding: 80px 0;
+    
+      list-style: none; /*убираем маркер*/
+    
+      background-color: #6c9fb6d7;
+      box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
+    
+      transition-duration: .25s;  /*время длительности анимаций*/
+    }
+    
+    .menu__item {
+      display: block;
+      padding: 12px 24px;
+    
+      color: rgb(252, 252, 252); /* цвет букв */
+    
+      font-family:'Yaldevi', sans-serif;
+      font-size: 20px; 
+      font-weight: 600%;
+    
+      text-decoration: none;
+    
+      transition-duration: .25s;
+    }
+    .menu__item:hover {
+      background-color: #CFD8DC;
+    }
+    
+    </style>+
+
+
+<style>/*Навбар2 и кнопка*/
+      .zxc{
+     position: relative;
+     top: -10px;
+     height: 0px;
+    }
+    .asd{
+      height: 0px;
+      position: relative;
+      top: -90px;
+    }
+    </style>
+
+<style> /*Карточки, шрифт, размер*/
+  #dg {
+    background: white;
+    padding-top: 180px;
+    padding-bottom: 200px;
+    text-align: center;
+    margin: 0 auto;
+    width: 90%;
+  }
+  
+  #dg h4 {
+    font-size: 30px;
+    font-weight: 700;
+  }
+
+  #dg h3 {
+    font-size: 30px;
+    font-weight: 700;
+    color: white;
+  }
+
+
+</style>
+
+<style>
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+
+
+
+ <div class="hamburger-menu">
+     <input id="menu__toggle" type="checkbox" />
+     <label class="menu__btn" for="menu__toggle">
+       <span></span>
+     </label>
+   
+     <ul class="menu__box">
+       <li><a class="menu__item" href="MAIN.html">MAIN</a></li>
+       <li><a class="menu__item" href="1-page(TICKET).html">TICKET</a></li>
+       <li><a class="menu__item" href="2-page(HOUSING).html">HOUSING</a></li>
+       <li><a class="menu__item" href="3-page(SERVICES).html">MY PROFILE</a></li>
+       <li><a class="menu__item" href="4-page(ABOUT).html">ABOUT US</a></li>
+     </ul>
+     </div>
+
+
+  <div id="headerwrap">
+     <div class="text-center">
+        <h1></h1>
+        <h1 style="color: rgba(29, 29, 29, 0.781);">|ADVEN|</h1> 
+        <h2 style="color: rgba(29, 29, 29, 0.781);">Live where you want!</h2>
+        <h2>⠀</h2> 
+      </div>
+    </div>
+
+     <div class="zxc"> <!--ADVEN||-->
+     <nav class="navbar navbar-expand-sm bg-info navbar-dark"> <!--Указываем что полоса дожна быть темной, а шрифт белым-->
+        <a class="navbar-brand">ADVEN || </a> <!--создает имя проекту-->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar"><!--навбар коллапс для группирования-->
+          <ul class="navbar-nav"> <!--для навигация высоты навбаров-->
+            <li class="nav-item"> <!--Родитель нав линка, можно управлять какой будет ссылка-->
+              <a class="nav-link" href="#">Buy ></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Sell ></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Rent |</a>
+            </li>    
+          </ul>
+        </div>  
+      </nav>
+    </div>
+
+
+
+
+    <div id="dg">
+      <h4 style="font-size: 85px; color: rgb(104, 177, 206);">Make your choice!</h4>
+        <br>
+        <br>
+        <br>
+      <div class="card-deck">
+
+        <div class="card bg-info text-white " > <!--создаем карточку, добавляем фото и делаем описание дальше в батон можем добавить ссылку-->
+            <img class="card-img-top" src="самолет_острова.jpg" alt="Card image">
+            <div class="card-body">
+              <h3 class="card-title">Aircraft</h3>
+              <p class="card-text">Fly like a bird and be free from everything</p>
+              
+              <a href="#" class="btn btn-outline-light">Fly away!</a>
+            </div>
+          </div>
+        
+        
+    
+
+          <div class="card bg-info text-white" >
+            <img class="card-img-top" src="горы_лес_поезд_мост.jpg" alt="Card image">
+            <div class="card-body">
+              <h3 class="card-title">Train</h3>
+              <p class="card-text">Let the iron monster take you where the bird cannot fly</p>
+              
+              <a href="#" class="btn btn-outline-light">Start engines!</a>
+            </div>
+          </div>
+          
+    
+
+          <div class="card bg-info text-white" >
+            <img class="card-img-top" src="Мальорка_Майорка_Mesquida.jpg" alt="Card image">
+            <div class="card-body">
+              <h3 class="card-title">Ship</h3>
+              <p class="card-text">Let the voyage on the water be like Vasco Nunez de Balboa</p>
+              
+              <a href="#" class="btn btn-outline-light ">On the waves!</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="asd">
+        <div class="text-center">
+        <button type="button" class="btn btn-outline-info btn-lg" >Try your luck</button>
+    </div>
+    </div>
+
+
+
+<div class="copyright">
+        <div class="jumbotron text-center bg-info text-white" style="margin-bottom: 0px;"> <!--джумботрон создает поле как тэйбл, но она стоит как фон-->
+            <div class="row">
+            <div class="col-sm-4"> <!--уровень колонны, меняя зачение на 5 или 3 колонны изменят свое местоположеение-->
+                <h3 style="color: white;">Contact us</h3>
+                <p>Administrator</p>
+                <p>Moderator</p>
+                <p></p>
+              </div>
+              <div class="col-sm-4">
+                <h3 style="color: white;">Legal information</h3>
+                <p>Document</p>
+                <p>License</p>
+              </div>
+              <div class="col-sm-4">
+                <h3 style="color: white;">Cooperation proposals</h3>
+                <p>Mobile number</p>        
+                <p>Mail</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </body>
+      </html>
+        
+        
